@@ -9,6 +9,8 @@ function clicked(index)
         game[index]='X';
         flag=false;
         const ele=document.querySelector(`.js-${index}`);
+        const moveEle=document.querySelector('.js-move');
+        moveEle.innerHTML="O-Move";
         ele.innerHTML="X";
 
     }
@@ -16,6 +18,8 @@ function clicked(index)
         game[index]='O';
         flag=true
         const ele=document.querySelector(`.js-${index}`);
+        const moveEle=document.querySelector('.js-move');
+        moveEle.innerHTML="X-Move";
         ele.innerHTML="O";
     }
     checkWinner();
@@ -86,6 +90,8 @@ function gameOver()
     const divElement=document.querySelector(".js-grid");
     divElement.innerHTML="<p>Game Over Please Reset the game</p>";
     divElement.classList.add("game-over");
+    const moveEle=document.querySelector('.js-move');
+    moveEle.innerHTML=" ";
 
 }
 function resetGame()
