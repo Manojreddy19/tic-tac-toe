@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rock-paper-scissors</title>
+</head>
+<body>
+    <p>Pick your move</p>
+    <button onclick="game('rock')">
+        rock
+    </button>
+    <button onclick="game('paper')">
+        paper  
+    </button>
+    <button onclick="game('scissor')">
+        scissor
+    </button>
+    <button onclick="resetButton()">
+        reset
+
+    </button>
+
+    <script>
+        const history={
+            wins:0,
+            draws:0,
+            losses:0
+
+        };
+        function game(playerMove)
+        {
+            const computerMove=makeComputer();
+            let result=''
+            if(playerMove=='rock'){
+                if(computerMove=='rock'){
+                    result='game draw';
+                    history.draws++;
+
+                }
+                else if(computerMove=='paper')
+                {
+                    result='you lose';
+                    history.losses++;
+                }
+                else{
+                    result='you win';
+                    history.wins++;
+                }
+
+            }
+            else if(playerMove=='paper'){
+                if(computerMove=='rock'){
+                    result='you win';
+                    history.wins++;
+                }
+                else if(computerMove=='paper')
+                {
+                    result='game draw';
+                    history.draws++;
+                }
+                else{
+                    result='you lose'
+                    history.losses++;
+                }
+
+            }
+            else{
+                if(computerMove=='rock'){
+                    result='you lose';
+                    history.losses++;
+
+                }
+                else if(computerMove=='paper')
+                {
+                    result='you won';
+                    history.wins++;
+                }
+                else{
+                    result='game draw';
+                    history.draws++;
+                }
+
+            }
+            alert(result +",\n your move: "+playerMove+",\n computer move: "+ computerMove+`\n wins:${history.wins} draws:${history.draws} loses:${history.losses}`);
+            //document.body.innerHTML=result;
+        }
+
+        function makeComputer()
+        {
+            let move=Math.random()*3;
+            move=Math.floor(move);
+            if(move==0){
+                return 'rock';
+            }
+            else if(move==1)
+            {
+                return 'paper';
+            }
+            else{
+                return 'scissor';
+            }
+           
+
+        }
+
+        function resetButton()
+        {
+            history.wins=0;
+            history.losses=0;
+            history.draws=0;
+        }
+    </script>
+    
+</body>
+</html>
